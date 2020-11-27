@@ -17,12 +17,11 @@ export class HeroesComponent implements OnInit {
   //   name: 'Windstorm'
   // }
 
-  updateHeroName(id) {
-    for(let i = 1; i <= this.heroes.length; i++){
+  updateHeroName(id, tempName) {
+    for(let i = 0; i < this.heroes.length; i++){
       if (id == this.heroes[i].id){
         console.log("IM HERE")
-        this.heroes[i].name = this.tempName
-        this.tempName = ''
+        this.heroes[i].name = tempName
       }
     }
   }
