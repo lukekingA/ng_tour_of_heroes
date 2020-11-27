@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col text-center">
+        <h2>{{"Heroes" | uppercase }}</h2>
+    </div>
+</div>
+<div class="row">
+    <dic class="col-4">
+        <div class="card m-2" *ngFor="let hero of heroes">
+            <div class="card-body text-center">
+                <h2>{{hero.name | uppercase}} Details</h2>
+                <div><span>id: </span>{{hero.id}}</div>
+                <div><span>name: </span>{{hero.name}}</div>
+                <div>
+                    <input type="text" [(ngModel)]="tempName" placeholder="name">
+                    <button class="btn btn-primary btn-sm ml-2" (click)="updateHeroName(hero.id)">Update</button>
+                </div>
+            </div>
+        </div>
+         
+    </dic>
+</div>
+
+
+
+       
+
