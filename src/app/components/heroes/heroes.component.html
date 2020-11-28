@@ -4,10 +4,23 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-4 offset-4">
+        <div *ngIf="selectedHero.id > 0" class="text-center">
+            <div class="card shadow-sm">
+                <div class="card-body ">
+                <h3>Selected Hero</h3>
+                <p class="">{{selectedHero.name | uppercase}}</p>
+                <button class="btn btn-primary btn-sm shadow ml-2" (click)="clearSelectedHero()">Clear</button>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-3" *ngFor="let hero of heroes">
         <div class="card m-2 shadow">
             <div class="card-body text-center">
-                <h2>{{hero.name | uppercase}} Details</h2>
+                <h2 (click)="onSelect(hero)">{{hero.name | uppercase}} Details</h2>
                 <div class="row">
                     <div class="text-left col-6 offset-3">
                         <div><span>id: </span>{{hero.id}}</div>

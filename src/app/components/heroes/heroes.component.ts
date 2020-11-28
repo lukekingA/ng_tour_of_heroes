@@ -9,23 +9,29 @@ import { Heroes } from '../../data/mock-heros'
 })
 export class HeroesComponent implements OnInit {
 
-  tempName = ''
+  selectedHero: Hero = {
+    id: 0,
+    name: ""
+  }
 
   heroes = Heroes
-  // hero: Hero = {
-  //   id:1,
-  //   name: 'Windstorm'
-  // }
 
   updateHeroName(id, tempName) {
     for(let i = 0; i < this.heroes.length; i++){
-      if (id == this.heroes[i].id){
-        console.log("IM HERE")
+      if (id == this.heroes[i].id) {
         this.heroes[i].name = tempName
       }
     }
   }
+  
+  onSelect(hero: Hero) {
+    this.selectedHero = hero
+  }
 
+  clearSelectedHero() {
+    this.selectedHero.id = 0
+    this.selectedHero.name =""
+  }
   constructor() { }
 
   ngOnInit(): void {
