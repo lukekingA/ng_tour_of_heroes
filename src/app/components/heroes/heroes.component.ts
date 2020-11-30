@@ -11,26 +11,37 @@ export class HeroesComponent implements OnInit {
 
   selectedHero: Hero = {
     id: 0,
-    name: ""
+    name: "",
+    detail: ""
   }
 
   heroes = Heroes
 
-  updateHeroName(id, tempName) {
-    for(let i = 0; i < this.heroes.length; i++){
-      if (id == this.heroes[i].id) {
-        this.heroes[i].name = tempName
-      }
-    }
+  updateHeroName(tempName) {
+    this.selectedHero.name = tempName
   }
   
-  onSelect(hero: Hero) {
-    this.selectedHero = hero
+  selectHero(hero: Hero) {
+    this.selectedHero.id = hero.id
+    this.selectedHero.name = hero.name
+    this.selectedHero.detail = hero.detail
   }
 
   clearSelectedHero() {
     this.selectedHero.id = 0
     this.selectedHero.name =""
+  }
+
+  saveSelectedHero() {
+    for (let i = 0; i < this.heroes.length; i++){
+      let h = this.heroes[i]
+      let sh = this.selectedHero
+      if (sh.id == h.id) {
+        h.name = sh.name
+        h.detail = sh.detail
+      }
+    }
+    this.clearSelectedHero()
   }
   constructor() { }
 
