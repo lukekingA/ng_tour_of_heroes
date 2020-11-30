@@ -3,28 +3,7 @@
         <h2>{{"Heroes" | uppercase }}</h2>
     </div>
 </div>
-<div class="row">
-    <div class="col-4 offset-4">
-        <div *ngIf="selectedHero.id > 0" class="text-center">
-            <div class="card shadow-sm">
-                <div class="card-body ">
-                    <h3>Selected Hero</h3>
-                    <p class="">{{selectedHero.name | uppercase}}</p>
-                    <div class="d-flex justify-content-center">
-                        <div class="d-flex align-items-center">
-                            <input type="text" #tempName placeholder="name">
-                            <button class="btn btn-primary btn-sm ml-2 shadow-sm" (click)="updateHeroName(tempName.value)">Update</button>
-                        </div>
-                    </div>
-                    <div class="mt-2">
-                        <button class="btn btn-primary btn-sm shadow ml-2" (click)="clearSelectedHero()">Clear</button>
-                        <button class="btn btn-primary btn-sm shadow ml-2" (click)="saveSelectedHero()">Save</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
 <div class="row">
     <div class="col-3" *ngFor="let hero of heroes">
         <div class="card m-2 shadow">

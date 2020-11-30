@@ -15,12 +15,11 @@ export class HeroesComponent implements OnInit {
     detail: ""
   }
 
-  heroes = Heroes
-
   updateHeroName(tempName) {
     this.selectedHero.name = tempName
   }
-  
+
+  heroes = Heroes
   selectHero(hero: Hero) {
     this.selectedHero.id = hero.id
     this.selectedHero.name = hero.name
