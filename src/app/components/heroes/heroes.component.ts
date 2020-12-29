@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../models/hero'
-import { Heroes } from '../../data/mock-heros'
+//import { Heroes } from '../../data/mock-heros'
+import { HeroService } from '../../hero.service'
+import { MessageService } from '../../message.service'
 
 @Component({
   selector: 'app-heroes',
@@ -15,36 +17,26 @@ export class HeroesComponent implements OnInit {
     detail: ""
   }
 
-  updateHeroName(tempName) {
-    this.selectedHero.name = tempName
-  }
+  private heroes: Hero[];
 
-  heroes = Heroes
   selectHero(hero: Hero) {
     this.selectedHero.id = hero.id
     this.selectedHero.name = hero.name
     this.selectedHero.detail = hero.detail
   }
 
-  clearSelectedHero() {
-    this.selectedHero.id = 0
-    this.selectedHero.name =""
-  }
-
-  saveSelectedHero() {
-    for (let i = 0; i < this.heroes.length; i++){
-      let h = this.heroes[i]
-      let sh = this.selectedHero
-      if (sh.id == h.id) {
-        h.name = sh.name
-        h.detail = sh.detail
-      }
-    }
-    this.clearSelectedHero()
-  }
-  constructor() { }
+  constructor(private hs: HeroService, private ms: MessageService) {
+    
+   }
 
   ngOnInit(): void {
+    this.hs.getHeroes().subscribe(h => {
+      setTimeout(() => {
+        this.ms.add("Got Heroes? Yes we do!!")
+        this.heroes = h
+      }, 2000)
+      
+    });
   }
 
 }

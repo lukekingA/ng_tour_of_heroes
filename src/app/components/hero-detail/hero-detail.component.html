@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-4 offset-4">
-        <div *ngIf="selectedHero.id > 0" class="text-center">
+        <div *ngIf="hero.id > 0" class="text-center">
             <div class="card shadow-sm">
                 <div class="card-body ">
                     <h3>Selected Hero</h3>
-                    <p class="">{{selectedHero.name | uppercase}}</p>
+                    <p class="">{{hero.name | uppercase}}</p>
                     <div class="d-flex justify-content-center">
                         <div class="d-flex align-items-center">
                             <input type="text" #tempName placeholder="name">
